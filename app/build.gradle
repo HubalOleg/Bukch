@@ -59,6 +59,8 @@ dependencies {
 
     implementation "com.jakewharton:butterknife:$butterknife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
+
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
 }
 
 apply plugin: 'com.google.gms.google-services'

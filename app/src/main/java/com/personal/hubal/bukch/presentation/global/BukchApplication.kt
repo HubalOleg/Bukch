@@ -11,9 +11,7 @@ import com.personal.hubal.bukch.presentation.di.global.DaggerAppComponent
 
 class BukchApplication : Application() {
 
-    companion object {
-        lateinit var appComponent : AppComponent
-    }
+    lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()

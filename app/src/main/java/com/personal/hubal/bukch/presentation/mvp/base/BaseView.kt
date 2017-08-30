@@ -5,5 +5,5 @@ package com.personal.hubal.bukch.presentation.mvp.base
  */
 
 interface BaseView {
-
+    fun showToast(message: String)
 }

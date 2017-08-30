@@ -3,6 +3,7 @@ package com.personal.hubal.bukch.presentation.mvp.base
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
+import com.personal.hubal.bukch.presentation.utils.toast
 import javax.inject.Inject
 
 /**
@@ -28,5 +29,9 @@ abstract class MvpFragment<T : BasePresenter> : Fragment(), BaseView {
     override fun onDestroyView() {
         super.onDestroyView()
         presenter.detachView()
+    }
+
+    override fun showToast(message: String) {
+        context.toast(message)
     }
 }

@@ -1,6 +1,5 @@
-package com.personal.hubal.bukch.presentation.mvp.auth.sign_in
+package com.personal.hubal.bukch.presentation.mvp.auth.sign_up
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,24 +8,16 @@ import com.personal.hubal.bukch.R
 import com.personal.hubal.bukch.presentation.di.auth.DaggerAuthComponent
 import com.personal.hubal.bukch.presentation.mvp.base.MvpFragment
 import com.personal.hubal.bukch.presentation.utils.getAppComponent
-import kotlinx.android.synthetic.main.fragment_sign_in.*
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 /**
- * Created by hubal on 8/28/2017.
+ * Created by hubal on 8/30/2017.
  */
 
-class SignInFragment : MvpFragment<SignInPresenter>() {
-
-    var navigator : Navigator? = null
+class SignUpFragment: MvpFragment<SignUpPresenter>() {
 
     companion object {
-        fun newInstance(): SignInFragment = SignInFragment()
-    }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is Navigator)
-            navigator = context
+        fun newInstance(): SignUpFragment = SignUpFragment()
     }
 
     override fun initInjection() {
@@ -37,27 +28,19 @@ class SignInFragment : MvpFragment<SignInPresenter>() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_sign_in, container, false)
+        return inflater?.inflate(R.layout.fragment_sign_up, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        loginButton.setOnClickListener {
-            onLoginClick()
-        }
-        signUpButton.setOnClickListener {
-            navigator?.onSignUpClick()
+        registerButton.setOnClickListener {
+            registerUser()
         }
     }
 
-    private fun onLoginClick() {
-        presenter.onLogin(
+    private fun registerUser() {
+        presenter.registerUser(
                 emailEditText.text.toString(),
                 passwordEditText.text.toString())
-    }
-
-    interface Navigator {
-        fun onSignUpClick()
     }
 }

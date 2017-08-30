@@ -10,10 +10,15 @@ import rx.Observable
 
 class RxFirebaseAuth {
 
-    fun signInWithEmailAndPassword(email: String,
-                                   password: String): Observable<AuthResult> {
+    fun signInWithEmailAndPassword(email: String, password: String): Observable<AuthResult> {
         return Observable.create {
             RxHandler.assignOnTask(it, FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password))
+        }
+    }
+
+    fun signUpWithEmailAndPassword(email: String, password: String): Observable<AuthResult> {
+        return Observable.create {
+            RxHandler.assignOnTask(it, FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password))
         }
     }
 }
